@@ -16,3 +16,8 @@ export { studentsAry, sum, PI };
 // 미리 만들어 놓고 export/import 하면 더 편하다
 
 const PI = 3.14;
+
+function getStudentInfo() {
+  return ["가나다라", "마바사", "아자차카", "파타하"];
+}
+getStudentInfo();
