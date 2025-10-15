@@ -93,16 +93,16 @@ import { studentsAry, PI } from "./data.js";
 // }, []);
 // console.log(result);
 
-// 배열 속 중복된 값 제거3
-const numAry = [23, 12, 55, 98, 23, 12];
-let result = numAry.reduce(function (acc, elem) {
-  let exists = acc.reduce(function (acc2, elem2) {
-    return acc2 || elem2 == elem;
-  }, false);
+// // 배열 속 중복된 값 제거3
+// const numAry = [23, 12, 55, 98, 23, 12];
+// let result = numAry.reduce(function (acc, elem) {
+//   let exists = acc.reduce(function (acc2, elem2) {
+//     return acc2 || elem2 ==
+//   }, false);
 
-  if (!exists) {
-    acc.push(elem);
-  }
-  return acc;
-}, []);
-console.log(result);
+//   if (!exists) {
+//     acc.push(elem);
+//   }
+//   return acc;
+// }, []);
+// console.log(result);
