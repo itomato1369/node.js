@@ -41,3 +41,9 @@ console.log(fn, ln, age);
 // "가나다라", "마바사", "아자차카", "파타하"
 let [ary1, ary2, ...ary3] = getStudentInfo();
 console.log(ary1, ary2, ary3);
+
+// default function parameter 매개값
+function minus(n1 = 0, n2 = 0) {
+  return n1 - n2;
+}
+console.log(minus(10));
