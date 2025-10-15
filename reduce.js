@@ -2,20 +2,20 @@
 // reduce(function() { ... })
 // 기능만 잘 만들면 다양하게 사용가능
 
-import { studentsAry, PI } from "./data.js";
+import { studentsAry } from "./data.js";
 // ./현재 경로에서 data.js에서 studentsAry를 가져와서 쓰겠습니다
 // require 도 import와 같다
 
 // let result = [1, 2, 3, 4, 5].reduce(function (acc, elem, idx, ary) {
 //   // acc 누산값
-//   console.log(`acc:${acc}, elem:${elem}, idx:${idx}, ary:${ary}`);
+//   //   console.log(`acc:${acc}, elem:${elem}, idx:${idx}, ary:${ary}`);
 //   return acc + elem;
 // }, 0);
-// console.log(`결과: ${result}`);
+// // console.log(`결과: ${result}`);
 
 // let result = [1, 2, 3, 4, 5].reduce(function (acc, elem, idx, ary) {
 //   // acc 누산값
-//   console.log(`acc:${acc}, elem:${elem}, idx:${idx}, ary:${ary}`);
+//   //   console.log(`acc:${acc}, elem:${elem}, idx:${idx}, ary:${ary}`);
 //   if (idx % 2 == 0) {
 //     acc.push(elem);
 //   }
@@ -33,17 +33,17 @@ import { studentsAry, PI } from "./data.js";
 //   return acc;
 // };
 
-// // 누적합
-// const sumAry = (acc, elem) => {
-//   return acc + elem;
-// };
+// // 누적합을 만드는 함수
+const sumAry = (acc, elem) => {
+  return acc + elem;
+};
 
 // let result = [1, 2, 3, 4, 5].reduce(evenAry, []);
 // console.log(`결과: ${result}`);
-// // 새로운 배열
+// // // 새로운 배열
 
-// let result1 = [1, 2, 3, 4, 5].reduce(sumAry, 0);
-// console.log(`총합: ${result1}`);
+let result1 = [1, 2, 3, 4, 5].reduce(sumAry, 0);
+console.log(`총합: ${result1}`);
 
 // let result = [23, 11, 53, 29, 8].reduce(function (acc, elem, idx) {
 //   // acc, elem 큰 값을 반환
