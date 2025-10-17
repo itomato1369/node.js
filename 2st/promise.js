@@ -29,9 +29,9 @@ promise
     console.error(err);
   });
 
-fetch("")
-  .then((resp) => resp.json())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => console.log(err));
+// fetch(" ")
+//   .then((resp) => resp.json())
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => console.log(err));

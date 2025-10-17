@@ -19,22 +19,22 @@ const os = require("os");
 //   //   console.log("한 번 실행");
 // }, 1000);
 
-// fileSystem.readFile("./sample.txt", "utf-8", (err, data) => {
-//   if (err) {
-//     return;
-//   }
-//   let count = 0;
+fileSystem.readFile("./sample.txt", "utf-8", (err, data) => {
+  if (err) {
+    return;
+  }
+  let count = 0;
 
-//   let max = data.length;
+  let max = data.length;
 
-//   let loop = setInterval(() => {
-//     console.clear();
-//     console.log(data.substring(0, count++));
-//     if (count == max) {
-//       clearInterval(loop);
-//     }
-//   }, 10);
-// });
+  let loop = setInterval(() => {
+    console.clear();
+    console.log(data.substring(0, count++));
+    if (count == max) {
+      clearInterval(loop);
+    }
+  }, 10);
+});
 
 //   setTimeout(() => {
 //     clearInterval(loop); // 실행하는 loop를 종료
