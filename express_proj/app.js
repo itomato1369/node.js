@@ -128,7 +128,15 @@ app.get("/sales/list", (req, res) => {
 
 // ★5교시 문제★
 app.get("/:sno/:sname/:score", (req, res) => {
-  const { sno, sname, score } = req.params;
+  // req(Request, 요청객체) 사용자가 서버로 보낸
+  // 요청에 대한 정보
+  // res(Response, 응답객체) 서버가 사용자에게
+  // 응답을 보낼 때 사용하는 모든 기능
+  console.log(`===========================================`);
+  console.log("req 에요: ", req);
+  console.log(`===========================================`);
+  const { score, sno, sname } = req.params;
+  // params
 
   // 문자열로 들어온 'score' 값을 숫자로 변환
   const changeScore = parseInt(score);
