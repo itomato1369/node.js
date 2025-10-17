@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1017</title>
+  </head>
+  <body>
+    <button onclick="post_register()">등록(post요청)</button>
+    <button onclick="put_modify()">수정(put요청)</button>
+    <button onclick="delete_remove()">삭제(delete요청)</button>
+
+    <script>
+      function delete_remove() {
+        fetch("http://localhost:3000/post/3", {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            alert("삭제");
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+      function put_modify() {
+        fetch("http://localhost:3000/post/1", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "applicaiton/json",
+          },
+          body: JSON.stringify({
+            title: "몇 번글 삭제",
+            content: "Delete What content",
+            id: 1,
+          }),
+        })
+          .then((response) => response.json())
+          // {'code': 'not found'} => json 으로 바꿀수 있는데
+          // not found 면 못 바꾼다
+          .then((json) => {
+            console.log(json);
+            alert("수정");
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function post_register() {
+        // ★요청 리소스 http://localhost:3000/post 와★
+        // ★http: 라는 프로토콜 과 서버 정보가 다 있는게 URL★
+        // ★요청하는 방식에 따라 처리가 달라짐★
+        // ★이를 조합한게 Restful API Rest방식의 ~★
+        fetch("http://localhost:3000/post", {
+          //★fetch 서버에 요청 방식을 지정★
+          method: "POST",
+          headers: {
+            "Content-Type": "applicaiton/json",
+          },
+          body: JSON.stringify({
+            title: "1post test",
+            content: "post content",
+            id: 1,
+          }),
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            alert("등록이됨");
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
