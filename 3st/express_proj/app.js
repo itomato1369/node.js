@@ -10,7 +10,7 @@ const multer = require("multer");
 // ★파일 시스템 읽기★  require 혹은 import
 // ★무조건 맨 위에서 실행★
 
-// Route module 참조
+// Route module 참조 외부에서 import
 const boardRouter = require("./route/board.js");
 const customerRouter = require("./route/customers.js");
 const productRouter = require("./route/products.js");

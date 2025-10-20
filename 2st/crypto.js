@@ -37,3 +37,5 @@ getCryptoPassword("sa123")
   .catch((err) => {
     console.error(err);
   });
+
+module.exports = { getCryptoPassword };
