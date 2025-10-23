@@ -1,4 +1,3 @@
-// ★★ mysql 연결 세팅 ★★
 const mysql = require("mysql2/promise");
 
 // ★★ mysql 연결 세팅 ★★
@@ -8,12 +7,12 @@ const dbConfig = {
   password: "dev01",
   database: "dev",
   port: 3306, // mysql 기본 포트 3306
-  connectionLimit: 10, // pool 방식
+  connectionLimit: 10, // pull 방식
 };
-// ★ connection pool 생성
+//   connection pool 생성
 const pool = mysql.createPool(dbConfig);
 
-// ★ SQL 쿼리 함수를 읽을 수 있게 하는 함수★
+// 쿼리 함수
 function queryExecute(sql, params) {
   let connection;
   return new Promise(async (resolve, reject) => {

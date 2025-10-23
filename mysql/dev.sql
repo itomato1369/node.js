@@ -21,5 +21,7 @@ FROM customers;
 
 ALTER TABLE customers
 ADD COLUMN password_has VARCHAR(255) NOT NULL DEFAULT '1';
+ALTER TABLE customers
+ADD COLUMN password_salt VARCHAR(255) NOT NULL DEFAULT '1';
 
 

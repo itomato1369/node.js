@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>excel upload</title>
+  </head>
+  <body>
+    <h3>엑셀 업로드 excel upload</h3>
+    <form action="upload/excels" method="post" enctype="multipart/form-data">
+      <!-- enctype="multipart/form-data"는 폼 데이터를 서버로 전송하는 방식 지정 -->
+      파일 선택: <input type="file" name="excelFile" accept=".xls, .xlsx" />
+      <button type="submit">전송</button>
+    </form>
+  </body>
+</html>

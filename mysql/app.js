@@ -7,6 +7,7 @@ const crypto = require("crypto");
 const app = express();
 const port = 3000;
 
+// 메일링 transporter
 const transporter = nodemailer.createTransport({
   host: "smtp.daum.net",
   port: 465,
@@ -89,25 +90,6 @@ app.post("/signup", (req, res) => {
     res.status(500).send(`오류 ${err.message}`);
   }
 });
-
-// 로그인 html
-
-//
-// app.post("/signup", async(req, res) => {
-//   try {
-//     const { userId, password, email, phone } = req.body;
-//     // 사용자 입력
-//     const promise = new Promise((resolve, reject) => {
-//         let salt = crypto.randomBytes(64).toString("base64"); //salt생성
-//         crypto.pbkdf2(password, salt, 100000, 64, "sha512", (err, key) => {
-//             if (err) {
-//                 return reject
-//             }
-//         })
-//     })
-
-//   }
-// });
 
 //
 // mysql 의 customer TABLE을 조회
