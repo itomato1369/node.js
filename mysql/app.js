@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+// cors moduel
 const mysql = require("./sql/index.js");
 const nodemailer = require("nodemailer");
 //
@@ -23,6 +25,8 @@ app.use(express.json()); // json 형식
 app.use(express.urlencoded({ extended: true }));
 // 정적 디렉토리 설정
 app.use(express.static("public"));
+app.use(cors());
+// cors 정책을 무시하겠습니다
 
 app.get("/", (req, res) => {
   res.send("I love MONDAY");
@@ -94,8 +98,13 @@ app.post("/signup", (req, res) => {
 //
 // mysql 의 customer TABLE을 조회
 app.get("/customers", async (req, res) => {
-  let result = await mysql.queryExecute(`SELECT * FROM customers`, []);
-  res.send(result);
+  try {
+    const param = req.body;
+    let result = await mysql.queryExecute(`SELECT * FROM customers`, []);
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ Error: error.message });
+  }
 });
 
 app.get("/customers/:id", async (req, res) => {
@@ -107,14 +116,19 @@ app.get("/customers/:id", async (req, res) => {
   res.send(result);
 });
 
+// 고객 추가
 app.post("/customer", async (req, res) => {
-  const param = req.body.param;
-  // insert 쿼리 실행
-  console.log(param);
-  console.log(typeof param);
+  try {
+    const param = req.body;
+    // insert 쿼리 실행
+    console.log(param);
 
-  let result = await mysql.queryExecute(`INSERT INTO customers SET ?`, param);
-  res.send(result);
+    let result = await mysql.queryExecute(`INSERT INTO customers SET ?`, param);
+    res.send(result);
+  } catch (error) {
+    console.error("!!!! 서버 DB 쿼리 실패 상세 오류 !!!!", error);
+    res.status(500).send({ Error: "Server failed to insert data." });
+  }
 });
 
 app.post("/customer/:id", async (req, res) => {
@@ -127,21 +141,21 @@ app.post("/customer/:id", async (req, res) => {
   res.send(result);
 });
 
-app.put("/customer", async (req, res) => {
-  const param = req.body.param; // [{ name: '?', email: '?', phone: '?', address: '?'}, 5]
-  //   console.log(param);
-  try {
-    let result = await mysql.queryExecute(
-      `UPDATE customers SET ?
-    WHERE id = ?`,
-      param
-    );
-    res.send(result);
-  } catch (err) {
-    console.log("Error", err);
-  }
-});
+// app.put("/customer", async (req, res) => {
+//   const param = req.body.param; // [{ name: '?', email: '?', phone: '?', address: '?'}, 5]
+//   //   console.log(param);
+//   try {
+//     let result = await mysql.queryExecute(
+//       `UPDATE customers SET ?
+//     WHERE id = ?`,
+//       param
+//     );
+//     res.send(result);
+//   } catch (err) {
+//     console.log("Error", err);
+//   }
+// });
 
 app.listen(port, () => {
-  console.log(`http://localhost:${port} MONDAY server`);
+  console.log(`http://localhost:${port} FRIDAY server`);
 });
